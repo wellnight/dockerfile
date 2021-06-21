@@ -96,6 +96,7 @@ RUN set -eux; \
 	--enable-sockets \
     --enable-bcmath \
     --without-sqlite3 \
+    --without-pdo-sqlite \
 	\
 	# --enable-ftp is included here because ftp_ssl_connect() needs ftp to be compiled statically (see https://github.com/docker-library/php/issues/236)
 	--enable-ftp \
