@@ -32,7 +32,6 @@ RUN set -eux; \
 	tar \
 	xz \
 	# https://github.com/docker-library/php/issues/494
-	autoconf \
 	openssl \
 	tzdata; \
 	# time
@@ -73,8 +72,8 @@ RUN set -eux; \
 	linux-headers \
 	oniguruma-dev \
 	openssl-dev \
-	rabbitmq-c-dev \
-	sqlite-dev; \
+	rabbitmq-c-dev; \
+    #sqlite-dev; \
 	\
 	export CFLAGS="$PHP_CFLAGS" \
 	CPPFLAGS="$PHP_CPPFLAGS" \
@@ -150,6 +149,7 @@ RUN set -eux; \
 	php --version; \
     pecl install redis amqp; \
 	apk del --no-network .build-deps; \
+    apk add --no-cache rabbitmq-c; \
 	# sodium was built as a shared module (so that it can be replaced later if so desired), so let's enable it too (https://github.com/docker-library/php/issues/598)
 	docker-php-ext-enable sodium redis amqp
 
