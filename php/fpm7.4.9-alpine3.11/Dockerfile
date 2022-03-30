@@ -147,7 +147,7 @@ RUN set -eux; \
 	rm -rf /tmp/pear ~/.pearrc; \
 	# smoke test
 	php --version; \
-    pecl install redis amqp yaf mongoDB; \
+    pecl install redis amqp yaf mongodb swoole; \
 	apk del --no-network .build-deps; \
     apk add --no-cache rabbitmq-c; \
 	# sodium was built as a shared module (so that it can be replaced later if so desired), so let's enable it too (https://github.com/docker-library/php/issues/598)
